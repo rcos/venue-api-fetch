@@ -23,12 +23,14 @@ describe("Event Actions", () => {
 
   it("should get information for an event", (done) => {
     eventModule.getEvent(auth, "000000000000000000001000").then((event) => {
-      expect(event).to.not.be.null
+      expect(event).to.not.be.null;
+      expect(event.info).to.not.be.null;
+      expect(event.section).to.equal("000000000000000000000120");
       done();
     }).catch(done);
   });
 
-  it("Should get a users information", (done) => {
+  it("should upload image to event", (done) => {
     userModule.uploadToEvent(auth, {
       eventId: "000000000000000000001000",
       filePath: "./assets/testimg1.jpg",

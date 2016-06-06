@@ -34,7 +34,6 @@ describe("User", () => {
 
   it("should get a list of all upcoming user events", (done) => {
     userModule.getMyEvents(auth).then((events) => {
-      console.log(events);
       expect(events).to.not.be.null
       expect(events).to.not.be.empty
       expect(events[0].info).to.have.property("title");
