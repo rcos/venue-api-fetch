@@ -23,7 +23,8 @@ function AuthorizationInfo(domain, headers){
   this.cookies = getCookie(headers);
   this.domain = domain;
 
-  this.getHeaders = ()=>{
+  this.getHeaders = (opts)=>{
+    opts = opts || {};
     var headers = {
       "Cookie": Object.keys(this.cookies).reduce((string, key) => {
         return string + key + "=" + this.cookies[key] + ";";
@@ -34,7 +35,9 @@ function AuthorizationInfo(domain, headers){
       headers["Authorization"] = "Bearer " + this.loginToken;
 
     headers["accept"] = "application/json, text/plain, */*";
-    headers['content-type'] = 'application/json;charset=UTF-8';
+    if (!opts.form){
+      headers['content-type'] = 'application/json;charset=UTF-8';
+    }
 
     return headers;
   }

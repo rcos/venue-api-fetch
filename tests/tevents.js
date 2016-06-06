@@ -31,7 +31,7 @@ describe("Event Actions", () => {
   });
 
   it("should upload image to event", (done) => {
-    userModule.uploadToEvent(auth, {
+    eventModule.uploadToEvent(auth, {
       eventId: "000000000000000000001000",
       filePath: "./assets/testimg1.jpg",
       title: "Wow what a great time!",
