@@ -18,9 +18,10 @@ function getCookie(headers){
   }, {});
 }
 
-function AuthorizationInfo(headers){
+function AuthorizationInfo(domain, headers){
 
   this.cookies = getCookie(headers);
+  this.domain = domain;
 
   this.getHeaders = ()=>{
     var headers = {
@@ -50,7 +51,7 @@ function _getPreAuthSession(domain){
     if (response.status >= 400) {
       throw new Error("Bad response from server");
     }
-    var auth = new AuthorizationInfo(response.headers);
+    var auth = new AuthorizationInfo(domain, response.headers);
     return Promise.resolve(auth);
   });
 }
