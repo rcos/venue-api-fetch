@@ -25,18 +25,19 @@ describe("Event Actions", () => {
     eventModule.getEvent(auth, "000000000000000000001000").then((event) => {
       expect(event).to.not.be.null
       done();
-    });
+    }).catch(done);
   });
 
   it("Should get a users information", (done) => {
     userModule.uploadToEvent(auth, {
+      eventId: "000000000000000000001000",
       filePath: "./assets/testimg1.jpg",
       title: "Wow what a great time!",
       content: "Fun for everyone!"
     }).then((success) => {
       expect(success).to.be.true
       done();
-    });
+    }).catch(done);
   });
 
 })

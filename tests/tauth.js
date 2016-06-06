@@ -16,8 +16,6 @@ describe("Authentication", () => {
       expect(authInfo).to.not.be.null;
       expect(authInfo.token).to.not.be.null;
       done();
-    }).catch((err) => {
-      expect.fail(err);
-    });
+    }).catch(done);
   });
 })
