@@ -53,7 +53,6 @@ function AuthorizationInfo(domain, headers){
   }
 
   this.setLoginToken = (token) => {
-    console.log("Setting login token", token);
     this.loginToken = token;
     this.cookies["token"] = token;
   }
@@ -71,7 +70,6 @@ function _getPreAuthSession(domain){
 }
 
 function getAuthorizationInfo(domain, email, password){
-  console.log("Getting authorization info");
   return _getPreAuthSession(domain).then((auth) => {
     return fetch(domain + "/auth/local", {
       method: "POST",

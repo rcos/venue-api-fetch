@@ -37,6 +37,7 @@ describe("User", () => {
       expect(events).to.not.be.null
       expect(events).to.not.be.empty
       expect(events[0].info).to.have.property("title");
+      expect(events[0].courseNumber).to.not.be.null
       done();
     }).catch(done);
   });
