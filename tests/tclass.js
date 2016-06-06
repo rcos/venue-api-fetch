@@ -2,7 +2,7 @@ var chai = require("chai");
 var expect = chai.expect;
 
 var domain = "http://127.0.0.1:9000";
-var venue = require("../index")(domain);
+var venue = require("../index");
 
 describe("Integration/Module", () => {
   before((done) => {
