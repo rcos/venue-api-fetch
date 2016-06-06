@@ -1,12 +1,22 @@
 "use strict";
 
+var reactEnv = true;
 if (!global.fetch){
+  reactEnv = false;
   var Promise = require("bluebird");
   require('isomorphic-fetch');
+}else{
+  process.nextTick = setImmediate
+  var Promise = require("promise");
 }
 
 function getCookie(headers){
-  let cookieVars = headers._headers["set-cookie"].join(";").split(";");
+  var cookieVars;
+  if (reactEnv){
+    cookieVars = headers.get("set-cookie").split(",").join(";").split(";");
+  }else{
+    cookieVars = headers._headers["set-cookie"].join(";").split(";");
+  }
   return cookieVars.reduce((o,v,i) => {
     var ar = v.split("=");
     if (ar.length != 2){
@@ -43,6 +53,7 @@ function AuthorizationInfo(domain, headers){
   }
 
   this.setLoginToken = (token) => {
+    console.log("Setting login token", token);
     this.loginToken = token;
     this.cookies["token"] = token;
   }
@@ -60,6 +71,7 @@ function _getPreAuthSession(domain){
 }
 
 function getAuthorizationInfo(domain, email, password){
+  console.log("Getting authorization info");
   return _getPreAuthSession(domain).then((auth) => {
     return fetch(domain + "/auth/local", {
       method: "POST",
@@ -69,7 +81,13 @@ function getAuthorizationInfo(domain, email, password){
         "password": password
       })
     }).then((res) => {
-      return res.json();
+      if (!res.ok){
+        return res.text().then((err) => {
+          throw new Error(err);
+        });
+      }else{
+        return res.json();
+      }
     }).then((json) => {
       auth.setLoginToken(json["token"]);
       return Promise.resolve(auth);
