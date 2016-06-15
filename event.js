@@ -19,22 +19,32 @@ function getEvent(auth, eventId){
 
 // TODO file upload support in react is shaky atm
 function uploadToEvent(auth, info){
+
+  var apiPath = auth.domain + "/api/submissions/";
   var eventId = info["eventId"];
   var filePath = info["filePath"];
   var title = info["title"];
   var content = info["content"];
+  var headers = auth.getHeaders();
+  delete headers["content-type"];
+
+  // TODO add alternate method for desktop testing, FormData is only
+  // available in react-native
   var form = FormData();
   form.append('title', title);
   form.append('content', content);
   form.append('eventId', eventId);
+  form.append('coordinates[0]', info["coordinates"][0],toString());
+  form.append('coordinates[1]', info["coordinates"][1],toString());
   form.append('files', {
     uri: filePath,
     type: 'image/jpeg',
-    name: 'photo.jpg',
+    name: 'files[0]'
   });
+
   return fetch(apiPath, {
     method: "POST",
-    headers: auth.getHeaders(),
+    headers: headers,
     body: form
   })
 }

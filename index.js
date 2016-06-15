@@ -37,11 +37,16 @@ module.exports = (function(){
     return eventModule.getEvent(auth, id);
   }
 
+  function uploadToEvent(info){
+    eventModule.uploadToEvent(auth, info)
+  }
+
   return {
     setDomain: setDomain,
     authenticate: authenticate,
     getMe: getMe,
     getMyEvents: getMyEvents,
-    getEvent: getEvent
+    getEvent: getEvent,
+    _getAuth: () => auth
   }
 })();
