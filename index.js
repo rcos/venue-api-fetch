@@ -47,6 +47,7 @@ module.exports = (function(){
     getMe: getMe,
     getMyEvents: getMyEvents,
     getEvent: getEvent,
+    uploadToEvent: uploadToEvent,
     _getAuth: () => auth
   }
 })();
