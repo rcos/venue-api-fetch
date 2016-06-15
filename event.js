@@ -30,12 +30,14 @@ function uploadToEvent(auth, info){
 
   // TODO add alternate method for desktop testing, FormData is only
   // available in react-native
-  var form = FormData();
+  var form = new FormData();
   form.append('title', title);
   form.append('content', content);
   form.append('eventId', eventId);
-  form.append('coordinates[0]', info["coordinates"][0],toString());
-  form.append('coordinates[1]', info["coordinates"][1],toString());
+  if (info["coordinates"]){
+    form.append('coordinates[0]', info["coordinates"][0].toString());
+    form.append('coordinates[1]', info["coordinates"][1].toString());
+  }
   form.append('files', {
     uri: filePath,
     type: 'image/jpeg',

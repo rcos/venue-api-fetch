@@ -38,7 +38,7 @@ module.exports = (function(){
   }
 
   function uploadToEvent(info){
-    eventModule.uploadToEvent(auth, info)
+    return eventModule.uploadToEvent(auth, info)
   }
 
   return {
