@@ -41,6 +41,14 @@ module.exports = (function(){
     return eventModule.uploadToEvent(auth, info)
   }
 
+  function getSignupURL(){
+    return `${domain}/student/signup`;
+  }
+
+  function getDomain(){
+    return domain;
+  }
+
   return {
     setDomain: setDomain,
     authenticate: authenticate,
@@ -48,6 +56,8 @@ module.exports = (function(){
     getMyEvents: getMyEvents,
     getEvent: getEvent,
     uploadToEvent: uploadToEvent,
+    getSignupURL: getSignupURL,
+    getDomain: getDomain,
     _getAuth: () => auth
   }
 })();
