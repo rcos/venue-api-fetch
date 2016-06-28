@@ -7,6 +7,7 @@ if (!Promise){
 var eventModule = require("./event");
 var userModule = require("./user");
 var authModule = require("./auth");
+var submissionModule = require("./submission");
 
 // TODO export modules
 module.exports = (function(){
@@ -45,6 +46,10 @@ module.exports = (function(){
     return `${domain}/student/signup`;
   }
 
+  function getMySubmissions(){
+    return submissionModule.getMySubmissions(auth);
+  }
+
   function getDomain(){
     return domain;
   }
@@ -54,6 +59,7 @@ module.exports = (function(){
     authenticate: authenticate,
     getMe: getMe,
     getMyEvents: getMyEvents,
+    getMySubmissions: getMySubmissions,
     getEvent: getEvent,
     uploadToEvent: uploadToEvent,
     getSignupURL: getSignupURL,

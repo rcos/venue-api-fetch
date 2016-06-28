@@ -21,4 +21,8 @@ describe("Integration/Module", () => {
     venue.getEvent("000000000000000000001000").then(() => done());
   });
 
+  it("should get user submissions", (done) => {
+    venue.getMySubmissions().then(() => done());
+  });
+
 });
