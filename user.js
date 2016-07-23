@@ -1,6 +1,7 @@
 "use strict";
 
 var errorLog = require("./errorlog");
+var Promise = require("bluebird");
 
 if (!global.fetch){
   var Promise = require("bluebird");
@@ -23,10 +24,9 @@ function getMyCourses(auth){
   return fetch(apiPath, {
     method: "GET",
     headers: auth.getHeaders()
-  }).then((res) => {
-    return res.json();
-  }).then((json) => {
-    return json["courses"];
+  }).then((res) => res.json())
+    .then((json) => {
+        return Object.keys(json["courses"]).map((k) => json["courses"][k]);
   }).catch(errorLog(apiPath));
 }
 
@@ -85,3 +85,5 @@ function getMyEvents(auth){
 
 module.exports.getMe = getMe;
 module.exports.getMyEvents = getMyEvents;
+module.exports.getMySections = getMySections;
+module.exports.getMyCourses = getMyCourses;
