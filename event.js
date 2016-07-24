@@ -17,6 +17,18 @@ function getEvent(auth, eventId){
   }).catch(errorLog(apiPath));
 }
 
+function getMyEvents(auth){
+    var apiPath = auth.domain + "/api/sectionevents?onlyUserSections=me&withEventInfo=true&withSection=true";
+    return fetch(apiPath, {
+        method: 'GET',
+        headers: auth.getHeaders()
+    }).then((res) => {
+        return res.json();
+    }).then((json) =>
+        Object.keys(json).map((k) => json[k]))
+      .catch(errorLog(apiPath));
+}
+
 // TODO file upload support in react is shaky atm
 function uploadToEvent(auth, info){
 
@@ -51,6 +63,6 @@ function uploadToEvent(auth, info){
   })
 }
 
-
 module.exports.getEvent = getEvent;
+module.exports.getMyEvents = getMyEvents;
 module.exports.uploadToEvent = uploadToEvent;

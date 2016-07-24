@@ -30,6 +30,19 @@ describe("Event Actions", () => {
     }).catch(done);
   });
 
+  it("should get all of my events", (done) => {
+    eventModule.getMyEvents(auth).then((events) => {
+        expect(events).to.not.be.null;
+        expect(events).to.be.a('array');
+        expect(events[0]).to.have.property("location");
+        expect(events[0]).to.have.property("isPastDate");
+        expect(events[0]).to.have.property("isHappeningNow");
+        expect(events[0]).to.have.property("times");
+        expect(events[0].times).to.be.a('array');
+      done();
+    }).catch(done);
+  });
+
   it("should upload image to event", (done) => {
     try{
         eventModule.uploadToEvent(auth, {
