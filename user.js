@@ -52,8 +52,7 @@ function getMyEvents(auth){
   }).then((res) => {
     return res.json()
   }).then((resJson) => {
-
-    return resJson["sectionevents"].map((evt) => {
+    return resJson["sectionEvents"].map((evt) => {
 
       var sections = resJson["sections"];
       var courses = resJson["courses"];

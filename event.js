@@ -24,8 +24,9 @@ function getMyEvents(auth){
         headers: auth.getHeaders()
     }).then((res) => {
         return res.json();
-    }).then((json) =>
-        Object.keys(json).map((k) => json[k]))
+    }).then((json) => {
+        return Object.keys(json).map((k) => json[k]);
+    })
       .catch(errorLog(apiPath));
 }
 
