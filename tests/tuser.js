@@ -38,6 +38,9 @@ describe("User", () => {
             expect(events).to.not.be.empty
             expect(events[0].info).to.have.property("title");
             expect(events[0].courseNumber).to.not.be.null
+            expect(events.every((element, index, arr) => {
+              return arr.length - 1 == index || new Date(arr[index].info.times[0].start).getTime() <=  new Date(arr[index+1].info.times[0].start).getTime();
+            })).to.be.true
             done();
         }).catch(done);
     });
