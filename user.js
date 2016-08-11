@@ -78,8 +78,16 @@ function getMyEvents(auth){
 
       return evt;
 
-    });
+    }).sort(sortEventsByDate);
   }).catch(errorLog(apiPath));
+}
+
+function sortEventsByDate(a, b) {
+  if(a.hasOwnProperty('info') && a.info.hasOwnProperty('times') && a.info.times.length > 0 &&
+      b.hasOwnProperty('info') && b.info.hasOwnProperty('times') && b.info.times.length > 0) {
+        return new Date(a.info.times[0].start).getTime() >= (new Date(b.info.times[0].start)).getTime();
+  }
+  return true;
 }
 
 module.exports.getMe = getMe;
