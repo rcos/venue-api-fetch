@@ -26,6 +26,12 @@ module.exports = (function(){
     });
   }
 
+  function authenticateWithToken(token){
+    return authModule.getAuthorizationInfoFromToken(domain, token).then((authInfo) => {
+      auth = authInfo;
+    });
+  }
+
   function getMe(){
     return userModule.getMe(auth);
   }
@@ -57,6 +63,7 @@ module.exports = (function(){
   return {
     setDomain: setDomain,
     authenticate: authenticate,
+    authenticateWithToken: authenticateWithToken,
     getMe: getMe,
     getMyEvents: getMyEvents,
     getMySubmissions: getMySubmissions,
