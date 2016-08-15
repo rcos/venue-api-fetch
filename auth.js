@@ -69,6 +69,13 @@ function _getPreAuthSession(domain){
   });
 }
 
+function getAuthorizationInfoFromToken(domain, token){
+  return _getPreAuthSession(domain).then((auth) => {
+    auth.setLoginToken(token);
+    return Promise.resolve(auth);
+  });
+}
+
 function getAuthorizationInfo(domain, email, password){
   return _getPreAuthSession(domain).then((auth) => {
     return fetch(domain + "/auth/local", {
@@ -97,3 +104,4 @@ module.exports.getCookie =  getCookie;
 module.exports.AuthorizationInfo =  AuthorizationInfo;
 module.exports._getPreAuthSession =  _getPreAuthSession;
 module.exports.getAuthorizationInfo =  getAuthorizationInfo;
+module.exports.getAuthorizationInfoFromToken =  getAuthorizationInfoFromToken;
