@@ -58,6 +58,11 @@ function AuthorizationInfo(domain, headers){
   }
 }
 
+function removeLoginToken(){
+  this.loginToken = "";
+  this.cookies["token"] = "";
+}
+
 function _getPreAuthSession(domain){
   return fetch(domain + '/api/courses')
   .then(function(response) {
@@ -100,6 +105,7 @@ function getAuthorizationInfo(domain, email, password){
   });
 }
 
+module.eports.removeLoginToken = removeLoginToken;
 module.exports.getCookie =  getCookie;
 module.exports.AuthorizationInfo =  AuthorizationInfo;
 module.exports._getPreAuthSession =  _getPreAuthSession;

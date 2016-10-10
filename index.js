@@ -32,6 +32,10 @@ module.exports = (function(){
     });
   }
 
+  function signout(){
+    return authModule.removeLoginToken();
+  }
+
   function getMe(){
     return userModule.getMe(auth);
   }
@@ -61,6 +65,7 @@ module.exports = (function(){
   }
 
   return {
+    signout:signout,
     setDomain: setDomain,
     authenticate: authenticate,
     authenticateWithToken: authenticateWithToken,
