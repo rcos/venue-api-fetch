@@ -3,7 +3,7 @@ var expect = chai.expect;
 var authModule = require("../auth.js");
 var submissionModule = require("../submission.js");
 
-var domain = "http://127.0.0.1:3001";
+var domain = "http://127.0.0.1:3000";
 
 describe("Submission tests", () => {
 

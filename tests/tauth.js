@@ -2,7 +2,7 @@ var chai = require("chai");
 var expect = chai.expect;
 var auth = require("../auth.js");
 
-var domain = "http://127.0.0.1:3001";
+var domain = "http://127.0.0.1:3000";
 
 describe("Authentication", () => {
 

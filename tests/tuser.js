@@ -4,7 +4,7 @@ var authModule = require("../auth.js");
 var userModule = require("../user.js");
 var Promise = require("bluebird");
 
-var domain = "http://127.0.0.1:3001";
+var domain = "http://127.0.0.1:3000";
 
 describe("User", () => {
 

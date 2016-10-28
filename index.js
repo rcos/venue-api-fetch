@@ -12,7 +12,7 @@ var submissionModule = require("./submission");
 // TODO export modules
 module.exports = (function(){
 
-  var domain = "http://192.168.0.23:3001";
+  var domain = "http://192.168.0.23:3000";
 
   var auth;
 
