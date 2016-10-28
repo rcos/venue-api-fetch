@@ -3,7 +3,7 @@ var expect = chai.expect;
 var authModule = require("../auth.js");
 var eventModule = require("../event.js");
 
-var domain = "http://127.0.0.1:9000";
+var domain = "http://127.0.0.1:3001";
 
 describe("Event Actions", () => {
 

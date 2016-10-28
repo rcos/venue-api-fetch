@@ -3,7 +3,7 @@ var expect = chai.expect;
 var assert = chai.assert;
 var venue = require("../index");
 
-var domain = "http://127.0.0.1:9000";
+var domain = "http://127.0.0.1:3001";
 
 describe("Utility functions", () => {
 
@@ -14,6 +14,6 @@ describe("Utility functions", () => {
   });
 
   it("should get the signup URL", () => {
-    assert(venue.getSignupURL() == "http://127.0.0.1:9000/student/signup");
+    assert(venue.getSignupURL() == "http://127.0.0.1:3001/student/signup");
   });
 })
