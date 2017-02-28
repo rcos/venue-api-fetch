@@ -60,6 +60,10 @@ module.exports = (function(){
     return domain;
   }
 
+  function getMyCourses(){
+      return userModule.getMyCourses(auth);
+  }
+
   return {
     setDomain: setDomain,
     authenticate: authenticate,
@@ -71,6 +75,7 @@ module.exports = (function(){
     uploadToEvent: uploadToEvent,
     getSignupURL: getSignupURL,
     getDomain: getDomain,
+    getMyCourses: getMyCourses,
     _getAuth: () => auth
   }
 })();
