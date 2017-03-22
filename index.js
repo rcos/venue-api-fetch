@@ -69,6 +69,10 @@ module.exports = (function(){
       return courseModule.getCourses(auth);
   }
 
+  function getCourse(id){
+      return courseModule.getCourse(auth, id);
+  }
+
   return {
     setDomain: setDomain,
     authenticate: authenticate,
@@ -82,6 +86,7 @@ module.exports = (function(){
     getDomain: getDomain,
     getMyCourses: getMyCourses,
     getCourses: getCourses,
+    getCourse: getCourse,
     _getAuth: () => auth
   }
 })();
