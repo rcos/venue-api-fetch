@@ -13,8 +13,6 @@ function getCourses(auth){
     method: "GET",
     headers: auth.getHeaders()
   }).then((res) => {
-    //console.log(res.json());
-    //PARSE IT UP
     return res.json()
   }).catch(errorLog(apiPath));
 }
@@ -25,8 +23,6 @@ function getCourse(auth, id){
     method: "GET",
     headers: auth.getHeaders()
   }).then((res) => {
-    //console.log(res.json());
-    //PARSE IT UP
     return res.json()
   }).catch(errorLog(apiPath));
 }
