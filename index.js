@@ -8,6 +8,7 @@ var eventModule = require("./event");
 var userModule = require("./user");
 var authModule = require("./auth");
 var submissionModule = require("./submission");
+var courseModule = require("./course");
 
 // TODO export modules
 module.exports = (function(){
@@ -60,6 +61,18 @@ module.exports = (function(){
     return domain;
   }
 
+  function getMyCourses(){
+      return userModule.getMyCourses(auth);
+  }
+
+  function getCourses(){
+      return courseModule.getCourses(auth);
+  }
+
+  function getCourse(id){
+      return courseModule.getCourse(auth, id);
+  }
+
   return {
     setDomain: setDomain,
     authenticate: authenticate,
@@ -71,6 +84,9 @@ module.exports = (function(){
     uploadToEvent: uploadToEvent,
     getSignupURL: getSignupURL,
     getDomain: getDomain,
+    getMyCourses: getMyCourses,
+    getCourses: getCourses,
+    getCourse: getCourse,
     _getAuth: () => auth
   }
 })();
