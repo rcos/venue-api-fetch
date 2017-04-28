@@ -51,7 +51,7 @@ function uploadToEvent(auth, info){
     form.append('coordinates[0]', info["coordinates"][0].toString());
     form.append('coordinates[1]', info["coordinates"][1].toString());
   }
-  form.append('files[]', {
+  form.append('files[0]', {
     uri: filePath,
     type: 'image/jpeg',
     name: 'file.jpeg'
